@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Audiowide|VT323" rel="stylesheet">
+	<style>
+	*{padding: 0px; margin: 0px; font-family: 'VT323', monospace; }
+		body{background: url('./img/background.gif'); background-size: cover; overflow: hidden;}
+		#sun{position: absolute; top: -300px; left: -350px; width: 70vw;}
+		#earth{position: absolute; top: 220px; left: 50%; transform: translateX(-50%); width: 24vw; height: 24vw;}
+		#pac_box{position: absolute; top: 40px; right: 6vw; width: 230px; height: 200px;}
+		#pac_box article{position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 140px; height: 35px; line-height: 40px; text-align: center; color: white;}
+	
+
+		#pac_box #pac{position: absolute; left: 50%; transform: translateX(-50%); width: 140px; margin: 50px 0 0 0;}
+		#cheeze{position: absolute; width: 480px; bottom: -120px; right: -80px; transform: rotate(-10deg)}
+		#train{position: absolute; background: black; left: 300px; width: 120px; height: 60px; animation: train1 9s linear infinite; transform: scale(0.5); opacity: 0;}
+		#train #article1{position: absolute; background: yellow; width: 25px; height: 20px; top: 13px; left: 24px;}
+		#train #article2{position: absolute; background: yellow; width: 25px; height: 20px; top: 13px; right: 24px;}
+		#train #article3{position: absolute; background: #222428; width: 15px; height: 40px; right: -10px; bottom: 10px;}
+		#train #wheel1{position: absolute; left: 12px; bottom: -15px; width: 35px; height: 35px; background: url('./img/wheel.gif'); background-size: cover;}
+		#train #wheel2{position: absolute; right: 12px; bottom: -15px; width: 35px; height: 35px; background: url('./img/wheel.gif'); background-size: cover;}
+		@keyframes train1{
+			0%{left: -600px; bottom: 30px; opacity: 1.0}
+			40%{opacity: 1.0}
+			45%{left: 1300px; bottom: 100px; opacity: 0.0}
+			100%{opacity: 0.0}
+		}
+		#train999{position: absolute; width: 450px; left: -100px; bottom: -40px; transform: rotate(-6deg); animation: train999 6.25s infinite;}
+		@keyframes train999{
+			0%{left: -100px;}
+			90%{left: -50px;}
+			100%{left: -100px;}
+		}
+		#sun_box{position: absolute; left: 60px; top: 200px; width:420px; height: 280px;}
+		/*#sun_line1{position: relative; top: 0px; width: 10px; height: 80px;
+			background: white; animation: sun_line1 0.3s; animation-play-state: running}
+		#sun_line2{position: absolute; width: 60px; height: 10px; background: white; animation: sun_line2 0.3s; animation-delay: 0.3s; opacity: 0.0; animation-play-state: running}
+		@keyframes sun_line1{
+			0%{height: 0px;}
+			100%{height: 80px;}
+		}
+		@keyframes sun_line2{
+			0%{width: 0px; opacity: 1.0}
+			100%{width: 60px; opacity: 1.0}
+		}*/
+		#sun_video{position: absolute; top: -70px; left: 150px; width: 0px; height: 0px; border: solid 0px white; transition: all 0.6s;}
+		#earth_video{position: absolute; width: 0px; height: 0px; border: solid 0px white; top: 250px; left: 50%; transform: translateX(-50%); transition: all 0.6s;}
+		#cheeze_video{position: absolute; width: 0px; height: 0px; border: solid 0px white; bottom: 130px; right: 300px; transition: all 0.6s;}
+		#scal{position: absolute; top: 70px; width: 250px; height: 0px; border: solid 0px white; left: 50%; transform: translateX(-50%); transition: all 0.2s;}
+		#train_video{position: absolute; width: 0px; height: 0px; border: solid 0px white; bottom: 150px; left: 270px; transition: all 0.6s;}
+	</style>
+	<title>Pixel</title>
+</head>
+<body>
+	<img src="./img/sun.gif" id="sun">
+	<img src="./img/earth_15s_shadow.gif" id="earth">
+	<div id="pac_box">
+		<img src="./img/pacman_slow.gif" id="pac">
+		<article>
+			<img src="./img/pacman_scal.gif" id="scal">
+
+		</article>
+	</div>
+	
+	<div id="train">
+		<article id="article1"></article>
+		<article id="article2"></article>
+		<article id="article3"></article>
+		<article id="wheel1"></article>
+		<article id="wheel2"></article>
+	</div>
+	<script type="text/javascript">
+		for(var i=0; i< 10; i++){
+			var train = document.getElementById("train");
+			var c_train = train.cloneNode(true);
+			c_train.style.animationDelay = i*0.13 +"s";
+			document.body.appendChild(c_train);
+		}
+	</script>
+	<div id="sun_box">
+		<div id="sun_line1"></div>
+		<div id="sun_line2"></div>
+		<div id="sun_video"></div>
+	</div>
+	<img src="./img/cheeze.gif" id="cheeze">
+	<video id="earth_video" src="./video/earth.mp4" type="video/mp4"></video>
+
+	<video id="cheeze_video" src="./video/c.mp4" type="video/mp4"></video>
+	<video id="train_video" src="./video/shoes.mp4" type="video/mp4"></video>
+	<script type="text/javascript">
+		var scal_toggle = "off"
+		pac.onclick = function(){
+			if(scal_toggle == "off"){
+			scal_toggle = "on"
+			scal.style.border = "solid 5px white";
+			scal.style.height = "250px";
+			scal.style.top = "-20px";
+
+		}else{
+			scal_toggle = "off"
+			scal.style.border = "solid 0px white";
+			scal.style.height = "0px";
+			scal.style.top = "70px";
+		}
+		}
+		scal.onclick = function(){
+			if(scal_toggle == "off"){
+			scal_toggle = "on"
+			scal.style.border = "solid 5px white";
+			scal.style.height = "250px";
+			scal.style.top = "-20px";
+
+		}else{
+			scal_toggle = "off"
+			scal.style.border = "solid 0px white";
+			scal.style.height = "0px";
+			scal.style.top = "70px";
+		}
+		}
+		var cheeze_toggle = "off"
+		cheeze.onclick = function(){
+			if(cheeze_toggle == "off"){
+			cheeze_toggle = "on"
+			cheeze_video.style.border = "solid 5px white";
+			cheeze_video.style.bottom = "20px";
+			cheeze_video.style.width = "400px";
+			cheeze_video.style.height = "225px";
+			cheeze_video.setAttribute("src","./video/c.mp4");
+			cheeze_video.play();
+		}else{
+			cheeze_toggle = "off"
+			cheeze_video.style.border = "solid 0px white";
+			cheeze_video.style.bottom = "130px";
+			cheeze_video.style.width = "0px";
+			cheeze_video.style.height = "0px";
+			cheeze_video.setAttribute("src","./video/c.mp4");
+			cheeze_video.pause();
+		}
+		}
+		cheeze_video.onclick = function(){
+			if(cheeze_toggle == "off"){
+			cheeze_toggle = "on"
+			cheeze_video.style.border = "solid 5px white";
+			cheeze_video.style.bottom = "20px";
+			cheeze_video.style.width = "400px";
+			cheeze_video.style.height = "225px";
+			cheeze_video.setAttribute("src","./video/c.mp4");
+			cheeze_video.play();
+		}else{
+			cheeze_toggle = "off"
+			cheeze_video.style.border = "solid 0px white";
+			cheeze_video.style.bottom = "130px";
+			cheeze_video.style.width = "0px";
+			cheeze_video.style.height = "0px";
+			cheeze_video.setAttribute("src","./video/c.mp4");
+			cheeze_video.pause();
+		}
+		}
+
+		var earth_toggle = "off"
+		earth.onclick = function(){
+			if(earth_toggle == "off"){
+			earth_toggle = "on"
+			earth_video.style.border = "solid 5px white";
+			earth_video.style.top = "20px";
+			earth_video.style.width = "280px";
+			earth_video.style.height = "155px";
+			earth_video.setAttribute("src","./video/earth.mp4");
+			earth_video.play();
+			}else{
+			earth_toggle = "off"
+			earth_video.style.border = "solid 0px white";
+			earth_video.style.top = "250px";
+			earth_video.style.width = "0px";
+			earth_video.style.height = "0px";
+			earth_video.setAttribute("src","./video/earth.mp4");
+			earth_video.pause();
+			}
+		}
+		var sun_toggle = "off"
+		sun.onclick = function(){
+			if(sun_toggle == "off"){
+			sun_toggle = "on"
+			sun_video.style.border = "solid 5px black";
+			sun_video.style.top = "-140px";
+			sun_video.style.left = "0px";
+			sun_video.style.width = "420px";
+			sun_video.style.height = "260px";
+			sun_video.style.background = "url('./img/sun_light.gif')";
+			sun_video.style.backgroundSize = "cover";
+			}else{
+			sun_toggle = "off";
+			sun_video.style.border = "solid 0px black";
+			sun_video.style.top = "-70px";
+			sun_video.style.left = "150px";
+			sun_video.style.width = "0px";
+			sun_video.style.height = "0px";
+			}
+		}
+		sun_video.onclick = function(){
+			if(sun_toggle == "off"){
+			sun_toggle = "on"
+			sun_video.style.border = "solid 5px black";
+			sun_video.style.top = "-140px";
+			sun_video.style.left = "0px";
+			sun_video.style.width = "420px";
+			sun_video.style.height = "260px";
+			}else{
+			sun_toggle = "off";
+			sun_video.style.border = "solid 0px black";
+			sun_video.style.top = "-70px";
+			sun_video.style.left = "150px";
+			sun_video.style.width = "0px";
+			sun_video.style.height = "0px";
+			}
+		}
+	</script>
+	
+	<img src="./img/999.gif" id="train999">
+	<script type="text/javascript">
+		var train_toggle = "off"
+		train999.onclick = function(){
+			if(train_toggle == "off"){
+			train_toggle = "on"
+			train_video.style.border = "solid 5px white";
+			train_video.style.width = "290px"
+			train_video.style.height = "220px";
+			train_video.style.bottom = "70px";
+			train_video.setAttribute("src","./video/shoes.mp4");
+			train_video.play();
+
+		}else{
+			train_toggle = "off"
+			train_video.style.border = "solid 0px white";
+			train_video.style.width = "0px"
+			train_video.style.height = "0px";
+			train_video.style.bottom = "150px";
+			train_video.setAttribute("src","./video/shoes.mp4");
+			train_video.pause();
+		}
+		}
+	</script>
+</body>
+</html>
